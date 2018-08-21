@@ -205,36 +205,36 @@ void sm_run( state_t initial_statename, char **event_sequence, int nevents )
 
 	if( debug )
 	{
-		printf( "debug: time %d: in state %s, event %s, newstate %s\n",
-			e,
-			statenames[stateno],
-			actionnames[action],
-			statenames[newstate] );
+	    printf( "debug: time %d: in state %s, event %s, newstate %s\n",
+	    	e,
+	    	statenames[stateno],
+	       	actionnames[action],
+	    	statenames[newstate] );
 	}
 
         if( newstate != STATE_NOCHANGE && newstate != stateno )
 	{
-                /* true state change */
-		exit_state_function ext = exitstate[stateno];
-                if( do_exit_cb && ext != NULL )
-		{
-                    ext( statenames[stateno] );
-                }
-		if( do_transition_cb && transition != NULL )
-		{
-			transition( e,
-				    statenames[stateno],
-				    statenames[newstate],
-				    actionnames[action] );
-		}
+	    /* true state change */
+	    exit_state_function ext = exitstate[stateno];
+	    if( do_exit_cb && ext != NULL )
+	    {
+	    	ext( statenames[stateno] );
+	    }
+	    if( do_transition_cb && transition != NULL )
+	    {
+	    	transition( e,
+	    		    statenames[stateno],
+	    		    statenames[newstate],
+	    		    actionnames[action] );
+	    }
 
-		stateno = newstate;
+	    stateno = newstate;
 
-		enter_state_function ent = entrystate[stateno];
-                if( do_entry_cb && ent != NULL )
-		{
-                    ent( statenames[stateno] );
-                }
-        }
+	    enter_state_function ent = entrystate[stateno];
+	    if( do_entry_cb && ent != NULL )
+	    {
+	    	ent( statenames[stateno] );
+	    }
+	}
     }
 }
