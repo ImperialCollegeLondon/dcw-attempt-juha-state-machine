@@ -1,0 +1,19 @@
+In August 2018, Juha Aaltonen on LinkedIn's Plain Old C Programming
+group asked about state machines and "forward enums".  I said:
+use plain integers:-)  Then he posted some "proof of concept" code,
+incomplete and not compilable, and not completely clear even so, so I
+thought I'd try my idea out, even though some concepts in his code were
+not clear to me (in particular his idea of transition functions, and he
+also seemed to have an entirely missing concept of "here's the stream of
+events that actually occur as the state machine is running")..
+
+That didn't work, so I thought I'd try Nigel's idea: use strings not integers
+(for states and actions), and add my own twist: map these strings to
+integers internally so that the internal data structures can be very efficient
+arrays of structs, using a state no or action no as the index.
+
+part4 gets it working properly, although Juha has now provided more information
+about what transition functions are - and they're NOT what I thought of, and
+so implemented.  Ah well.
+
+		Duncan White, 21st August 2018
