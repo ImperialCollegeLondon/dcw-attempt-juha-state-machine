@@ -212,7 +212,7 @@ void sm_run( state_t initial_statename, char **event_sequence, int nevents )
 	    	statenames[newstate] );
 	}
 
-        if( newstate != STATE_NOCHANGE && newstate != stateno )
+	if( newstate != STATE_NOCHANGE && newstate != stateno )
 	{
 	    /* true state change */
 	    exit_state_function ext = exitstate[stateno];
