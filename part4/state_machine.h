@@ -1,21 +1,25 @@
-typedef char * state_t;		// names
+/*
+ * state_machine.h:	a generic simple state machine with states, actions
+ *			and an event sequence (a list of actions).  all are
+ *			represented in client-land as strings, but mapped to
+ *			integers inside the state machine for efficiency.
+ */
+
+typedef char * state_t;		// state and action names
 typedef char * action_t;
 
 typedef void (*transition_function)( uint16_t time, state_t from, state_t to, action_t action );
 typedef void (*exit_state_function)( state_t state );
 typedef void (*enter_state_function)( state_t state );
 
-typedef struct {
-    char *name;
-    enter_state_function on_entry;
-    exit_state_function  on_exit;
-} state_info_t;
-
 
 // transition list:
 // the user specifies state transitions as a list of tuples:
-// list( from_state, to_state, action, transition_function )
+// each ( from_state, to_state, action, transition_function )
 // where from_state, to_state and action are all strings.
+// a transition list is passed into the state machine via
+// sm_make_transitions() where it is converted into an efficient
+// 2D array of integers.
 typedef struct {
 	char *from_state;
 	char *action;

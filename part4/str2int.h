@@ -1,3 +1,9 @@
+/*
+ *  str2int.h: a simple immutable string -> integer map (aka hash in Perl terms)
+ *	       giving you the ability to quickly lookup what value (integer)
+ *	       corresponds to a given string in the map.
+ */
+
 typedef struct
 {
 	char *name;
