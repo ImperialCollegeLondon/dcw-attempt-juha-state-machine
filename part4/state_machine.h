@@ -12,6 +12,13 @@ typedef void (*transition_function)( uint16_t time, state_t from, state_t to, ac
 typedef void (*exit_state_function)( state_t state );
 typedef void (*enter_state_function)( state_t state );
 
+// a state information type:
+typedef struct {
+	char *name;
+	enter_state_function on_entry;
+	exit_state_function on_exit;
+} state_info_t;
+
 
 // transition list:
 // the user specifies state transitions as a list of tuples:
