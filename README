@@ -16,4 +16,9 @@ part4 gets it working properly, although Juha has now provided more information
 about what transition functions are - and they're NOT what I thought of, and
 so implemented.  Ah well.
 
-		Duncan White, 21st August 2018
+In part5, I go back to enums, using Michael Eager's suggestion of recompiling
+the state machine in the presence of the client specific definitions (here in
+the separate client_defs.h file).  Slightly inelegant but all the malloc()s
+go away, replaced with fixed-size arrays, which I suppose is neater!
+
+		Duncan White, 29th August 2018
